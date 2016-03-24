@@ -28,16 +28,32 @@ repositories {
 
 
 dependencies {
+
+	compile('org.projectlombok:lombok:1.16.8')
+
 	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	// compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-devtools')
-	compile('org.projectlombok:lombok:1.16.6')
+
 	compile('org.springframework.boot:spring-boot-starter-mail')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-jetty')
+	compile('org.webjars:bootstrap:3.3.6')
+
+	compile('org.mongodb:mongo-java-driver:3.2.2')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	//compile('org.jongo:jongo:1.2')  // as alternative to Spring Data MongoDB
+
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
-	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+	// testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
+
+}
+
+configurations.all {
+	// we exclude Tomcat, because we use Jetty as servlet container
+	exclude module: "spring-boot-starter-tomcat"
 }
 
 
@@ -49,5 +65,5 @@ eclipse {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.9'
+	gradleVersion = '2.12'
 }
