@@ -8,7 +8,7 @@ and [Bartosz Kielczewski](http://kielczewski.eu/2014/12/spring-boot-security-app
 
 Run with:
 
-    ./gradlew bootRun
+    ./gradlew -Dspring.profiles.active=dev bootRun
 
 
 #### IDEA Integration

@@ -13,8 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-//@EnableWebSecurity // handles CSRF
-@EnableGlobalMethodSecurity(securedEnabled = true) // , prePostEnabled = true)
+@EnableWebSecurity // handles CSRF
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -28,7 +28,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // has no relevance / overwritten by ManagementWebSecurityAutoConfiguration
                 //.antMatchers("/health**", "/info**", "/metrics**", "/env/**", "/beans**",  "/trace**", "/autoconfig**", "/dump**", "/configprops**").permitAll()
 
-                .antMatchers("/", "/public/**").permitAll()
+                .antMatchers("/", "/images/**", "/webjars/**").permitAll()
                 .antMatchers("/users/**").hasAuthority("ADMIN")
                 .anyRequest().fullyAuthenticated()
             .and()

@@ -11,9 +11,9 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot' 
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'spring-boot-security'
@@ -28,7 +28,7 @@ repositories {
 
 
 dependencies {
-
+	// "Put an End to Java Ceremony"
 	compile('org.projectlombok:lombok:1.16.8')
 
 	compile('org.springframework.boot:spring-boot-starter-actuator')
@@ -53,8 +53,8 @@ dependencies {
 }
 
 configurations.all {
-	// we exclude Tomcat, because we use Jetty as servlet container
-	exclude module: "spring-boot-starter-tomcat"
+	// we exclude Tomcat, because embedded Jetty is used as servlet container
+	exclude module: 'spring-boot-starter-tomcat'
 }
 
 springBoot {
@@ -66,6 +66,15 @@ bootRun {
 	systemProperties System.properties
 }
 
+
+// ~~ set reasonable defaults for IDEs
+
+idea {
+	module {
+		inheritOutputDirs = false
+		outputDir = file("$buildDir/classes/main/")
+	}
+}
 
 eclipse {
 	classpath {

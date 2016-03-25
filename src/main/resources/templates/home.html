@@ -1,29 +1,27 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<!--/*@thymesVar id="_csrf" type="org.springframework.security.web.csrf.CsrfToken"*/-->
-<!--/*@thymesVar id="currentUser" type="de.nava.demo.domain.CurrentUser"*/-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="base_layout">
 <head>
-    <meta charset="utf-8"/>
-    <title>Home page</title>
-    <link th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet"/>
+    <title layout:fragment="title">Home</title>
 </head>
 <body>
-<nav role="navigation">
-    <ul>
-        <!-- NOT --> <li th:if="${currentUser}"><a th:href="@{/login}">Log in</a></li>
-        <li th:if="${currentUser}">
-            <form th:action="@{/logout}" method="post">
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                <button type="submit">Log out</button>
-            </form>
-        </li>
-        <!--/*li><a th:href="${'/user/' + currentUser.id}">View myself</a></li*/-->
-        <th:block if="${currentUser and currentUser.role == 'ADMIN'}">
-            <li><a th:href="@{/user/create}">Create a new user</a></li>
-            <li><a th:href="@{/users}">View all users</a></li>
-        </th:block>
-    </ul>
-</nav>
+<div layout:fragment="content">
+    <nav role="navigation">
+        <ul>
+            <li th:if="${currentUser == null}"><a th:href="@{/login}">Log in</a></li>
+            <li th:if="${currentUser}">
+                <form th:action="@{/logout}" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <button type="submit">Log out</button>
+                </form>
+            </li>
+            <!--/*li><a th:href="${'/user/' + currentUser.id}">View myself</a></li*/-->
+            <th:block if="${currentUser and currentUser.role == 'ADMIN'}">
+                <li><a th:href="@{/user/create}">Create a new user</a></li>
+                <li><a th:href="@{/users}">View all users</a></li>
+            </th:block>
+        </ul>
+    </nav>
+</div>
 </body>
 </html>

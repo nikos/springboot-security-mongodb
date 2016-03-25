@@ -1,35 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="base_layout">
 <!--/*@thymesVar id="users" type="java.util.List<de.nava.demo.domain.User>"*/-->
 <head>
-    <meta charset="utf-8"/>
-    <title>List of Users</title>
+    <title layout:fragment="title">List of Users</title>
 </head>
 <body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/user/create">Create a new user</a></li>
-    </ul>
-</nav>
+<div layout:fragment="content">
 
-<h1>List of Users</h1>
+    <h1>List of Users</h1>
 
-<table>
-    <thead>
-    <tr>
-        <th>E-mail</th>
-        <th>Role</th>
-    </tr>
-    </thead>
-    <tbody>
-    <#list users as user>
-    <tr>
-        <td><a href="/user/${user.id}">${user.email}</a></td>
-        <td>${user.role}</td>
-    </tr>
-    </#list>
-    </tbody>
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>E-mail</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <#list users as user>
+            <tr>
+                <td><a href="/user/${user.id}">${user.email}</a></td>
+                <td>${user.role}</td>
+            </tr>
+            </#list>
+        </tbody>
+    </table>
+
+</div>
 </body>
 </html>

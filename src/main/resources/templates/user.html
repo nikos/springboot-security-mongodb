@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="base_layout">
 <!--/*@thymesVar id="user" type="de.nava.demo.domain.User"*/-->
 <head>
-    <meta charset="utf-8"/>
-    <title>User details</title>
+    <title layout:fragment="title">User details</title>
 </head>
 <body>
-<nav role="navigation">
-    <ul>
-        <li><a href="/">Home</a></li>
-    </ul>
-</nav>
+<div layout:fragment="content">
 
-<h1>User details</h1>
+    <h1>User details</h1>
 
-<p>E-mail: ${user.email}</p>
+    <p>E-mail: ${user.email}</p>
 
-<p>Role: ${user.role}</p>
+    <p>Role: ${user.role}</p>
+
+</div>
 </body>
 </html>

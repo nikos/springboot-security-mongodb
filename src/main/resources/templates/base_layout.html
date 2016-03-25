@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title layout:fragment="title" th:text="#{page.title}"></title>
+    <link th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+</head>
+<body>
+
+<header class="container-fluid">
+    <div class="col-lg-12">
+        <div class="row">
+            <a class="navbar-subbrand" id="ln-subbrand" th:href="@{/}" th:text="#{page.title}"></a>
+        </div>
+    </div>
+</header>
+
+<div id="wrapper" class="container-fluid">
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- Navigation                                                      -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <nav class="sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a th:href="@{/overview}" id="ln-overview">Overview</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <!-- Content                                                         -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div id="page-wrapper" layout:fragment="content">
+    </div>
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Footer                                                          -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<footer class="container-fluid">
+    <div class="footer-inner clearfix">
+        <div class="col-sm-4 pad" id="tx-copyright">Copyright 2016</div>
+        <div class="col-sm-4 text-center pad" id="tx-version">
+            <th:block th:text="${applicationVersion}"></th:block>
+        </div>
+        <div class="col-sm-4 text-right">
+            <a href="http://spring.io" target="_blank">
+                Powered by Spring Framework
+            </a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
