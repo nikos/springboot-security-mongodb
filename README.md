@@ -1,4 +1,7 @@
-### Demo for Spring Boot with Spring Security
+[![Build Status](https://travis-ci.org/nikos/spring-boot-security.svg?branch=master)](https://travis-ci.org/nikos/spring-boot-security)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/843f4e03e4664cfc8abcf441fd0b3f63)](https://www.codacy.com/app/niko_2/spring-boot-security)
+
+# Demo for Spring Boot with Spring Security
 
 A sample app on how you could integrate Spring Boot with an
 simple UI to administer users based on Spring Security concepts.
