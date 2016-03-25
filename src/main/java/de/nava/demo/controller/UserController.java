@@ -21,17 +21,17 @@ import java.util.NoSuchElementException;
 public class UserController {
 
     private final UserService userService;
-    private final UserCreateFormValidator userCreateFormValidator;
+    private final UserCreateFormValidator formValidator;
 
     @Autowired
-    public UserController(UserService userService, UserCreateFormValidator userCreateFormValidator) {
+    public UserController(UserService userService, UserCreateFormValidator formValidator) {
         this.userService = userService;
-        this.userCreateFormValidator = userCreateFormValidator;
+        this.formValidator = formValidator;
     }
 
     @InitBinder("form")
     public void initBinder(WebDataBinder binder) {
-        binder.addValidators(userCreateFormValidator);
+        binder.addValidators(formValidator);
     }
 
     @PreAuthorize("@currentUserServiceImpl.canAccessUser(principal, #id)")
@@ -67,7 +67,7 @@ public class UserController {
             bindingResult.reject("email.exists", "Email already exists");
             return "user_create";
         }
-        // ok, redirect
+        // everything fine redirect to list
         return "redirect:/users";
     }
 

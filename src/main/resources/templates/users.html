@@ -18,12 +18,10 @@
             </tr>
         </thead>
         <tbody>
-            <#list users as user>
-            <tr>
-                <td><a href="/user/${user.id}">${user.email}</a></td>
-                <td>${user.role}</td>
+            <tr th:each="user : ${users}">
+                <td><a th:href="${'/user/' + user.id}" th:text="${user.email}"></a></td>
+                <td th:text="${user.role}"></td>
             </tr>
-            </#list>
         </tbody>
     </table>
 

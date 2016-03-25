@@ -11,39 +11,37 @@
 
     <h1>Create a new user</h1>
 
-    <form role="form" name="form" action="" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <form role="form" action="#" th:object="${form}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 
         <div>
             <label for="email">Email address</label>
-            <input type="email" name="email" id="email" value="${form.email}" required autofocus/>
+            <input type="email" id="email" th:field="*{email}" required="required" autofocus="autofocus"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email error message</span>
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" required/>
+            <input type="password" id="password" th:field="*{password}" required="required"/>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error message</span>
         </div>
         <div>
             <label for="passwordRepeated">Repeat</label>
-            <input type="password" name="passwordRepeated" id="passwordRepeated" required/>
+            <input type="password" id="passwordRepeated" th:field="*{passwordRepeated}" required="required"/>
+            <span th:if="${#fields.hasErrors('passwordRepeated')}" th:errors="*{passwordRepeated}">password error message</span>
         </div>
         <div>
             <label for="role">Role</label>
-            <select name="role" id="role" required>
-                <option <#if form.role == 'USER'>selected</#if>>USER</option>
-                <option <#if form.role == 'ADMIN'>selected</#if>>ADMIN</option>
+            <select id="role" th:field="*{role}" required="required">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
             </select>
         </div>
         <button type="submit">Save</button>
     </form>
 
-    <@spring.bind "form" />
-    <#if spring.status.error>
-    <ul>
-        <#list spring.status.errorMessages as error>
-            <li>${error}</li>
-        </#list>
-    </ul>
-    </#if>
+    <!-- ul th:if="${spring.status.error}">
+        <li th:each="error : ${spring.status.errorMessages}" th:text="${error}"></li>
+    </ul -->
 
 </div>
 </body>
