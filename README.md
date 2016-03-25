@@ -14,7 +14,12 @@ Run with:
     ./gradlew -Dspring.profiles.active=dev bootRun
 
 
-#### IDEA Integration
+### DB Migration
+
+
+https://github.com/mongeez/mongeez/wiki/How-to-use-mongeez
+
+### IDEA Integration
 
 Set output directory to
 
