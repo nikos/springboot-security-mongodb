@@ -1,0 +1,8 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-1" author="niko">
+        <script>
+            db.user.insert({"email" : "user@example.com", "passwordHash" : "$2a$10$UBuTw1z0oPcEMlXQuzeLKem8pSjIzTrIjWDivzIroCiwqwAJjsvGO", "role" : "USER"});
+            db.user.insert({"email" : "admin@example.com", "passwordHash" : "$2a$10$UBuTw1z0oPcEMlXQuzeLKem8pSjIzTrIjWDivzIroCiwqwAJjsvGO", "role" : "ADMIN"});
+        </script>
+    </changeSet>
+</mongoChangeLog>

@@ -6,7 +6,6 @@ import de.nava.demo.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -39,10 +38,7 @@ public class UserService {
     }
 
     public User create(UserCreateForm form) {
-        User user = new User();
-        user.setEmail(form.getEmail());
-        user.setPasswordHash(new BCryptPasswordEncoder().encode(form.getPassword()));
-        user.setRole(form.getRole());
+        User user = User.build(form.getEmail(), form.getPassword(), form.getRole());
         return userRepository.save(user);
     }
 
