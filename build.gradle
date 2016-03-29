@@ -16,7 +16,7 @@ apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 
 jar {
-	baseName = 'spring-boot-security'
+	baseName = 'springboot-security-mongodb'
 	version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8

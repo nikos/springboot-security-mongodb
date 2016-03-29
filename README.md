@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/nikos/spring-boot-security.svg?branch=master)](https://travis-ci.org/nikos/spring-boot-security)
+[![Build Status](https://travis-ci.org/nikos/springboot-security-mongodb.svg?branch=master)](https://travis-ci.org/nikos/springboot-security-mongodb)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/843f4e03e4664cfc8abcf441fd0b3f63)](https://www.codacy.com/app/niko_2/spring-boot-security)
 
 # Demo for Spring Boot with Spring Security
